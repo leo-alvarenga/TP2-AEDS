@@ -16,15 +16,16 @@ void MenuTerminal(Item *itens)
 
     while(true)
     {
-        printf("-------------------------------------------\n");
-        printf("O que deseja fazer?:\n");
-        printf("1 - Receber arquivo.txt\n");
-        printf("2 - Resolver o problema da mochila\n");
-        printf("3 - Desalocar memória utilizada\n");
-        printf("0 - Encerrar\n");
-        printf("-------------------------------------------");
-        printf("\nOpção: ");
+        printf("|-------------------------------------------|\n");
+        printf("|O que deseja fazer?                        |\n");
+        printf("|1 - Receber arquivo.txt                    |\n");
+        printf("|2 - Resolver o problema da mochila         |\n");
+        printf("|3 - Desalocar memória utilizada            |\n");
+        printf("|0 - Encerrar                               |\n");
+        printf("|-------------------------------------------|\n");
+        printf("Opção: ");
         scanf("%d", &opcao);
+        printf("\n|-------------------------------------------|\n");
 
         switch(opcao)
         {
@@ -38,8 +39,10 @@ void MenuTerminal(Item *itens)
 
                 total = 0.0;
                 clock_t ini = clock();
+
                 CriaMochila(&aux);
-                printf("----------- LOADING -----------\n");
+
+                printf("|----------------- LOADING -----------------|\n");
 
                 for(int i = 1; i <= n ; ++i)
                 {
@@ -50,10 +53,19 @@ void MenuTerminal(Item *itens)
 
                 }
 
-                for (int i = 0; i < 40; ++i) {
-                    if (total >= 40) break;
+                for(int i = 0; i < 40; ++i) {
+
+
+                    if (total >= aux.peso)
+                    {
+
+                        break;
+
+                    }
+
                     printf("Item adicionado! - Peso: %d | Valor: %d\n", mochilaFinal[i].peso, mochilaFinal[i].valor);
                     total += mochilaFinal[i].peso;
+
                 }
 
                 printf("\n\nValor total obtido na melhor mochila: %d\nPeso total obtido na melhor mochila: %d\n\n", aux.valor, aux.peso);
@@ -69,15 +81,18 @@ void MenuTerminal(Item *itens)
             case 3:
 
                 printf("\n");
+                printf("|-------------------------------------------|\n");
 
                 if(flag)
                 {
 
                     Libera(&itens);
+                    printf("Memoria utilizada desalocada com sucesso.\n");
 
                 }
 
                 flag = 0;
+                printf("|-------------------------------------------|\n");
 
                 break;
 
